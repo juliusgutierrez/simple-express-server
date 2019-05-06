@@ -28,9 +28,9 @@ function createUser(req, res, next) {
 
 function login(req, res, next) {
     userService.login(req.body)
-        .then(message => {
-            if (message) {
-                res.json({message:message});
+        .then(response => {
+            if (response) {
+                res.json(response);
             } else {
                 res.status(500).json({message : 'invalid login'});
             }

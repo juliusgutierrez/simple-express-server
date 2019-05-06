@@ -6,4 +6,5 @@ const UserSchema = new Schema({
     password: {type: String, required: true}
 });
 
+UserSchema.set('toJSON', { virtuals: true });
 module.exports = mongoose.model('user', UserSchema);

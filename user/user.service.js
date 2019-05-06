@@ -1,16 +1,13 @@
 const bcrypt = require('bcryptjs');
 const User = require('./user.model');
+const jwt = require('jsonwebtoken');
+const config = require('../config')
 
 module.exports = {
-    authenticate,
     create,
     getAll,
     login
 };
-
-async function authenticate({username, password}) {
-    const user = await User.findOne({username});
-}
 
 async function create(userParam) {
     //add validation
@@ -40,10 +37,9 @@ async function getAll() {
 
 async function login({username, password}) {
     const user = await User.findOne({username: username});
-    console.log(user);
     if (user && bcrypt.compareSync(password, user.password)) {
-        // this should be token, for now message
-        return 'success';
+        const token = jwt.sign({sub: user.username}, config.secret);
+        const {password, ...userWithoutPassword} = user.toObject();
+        return {...userWithoutPassword, token};
     }
-
 }
