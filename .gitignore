@@ -80,6 +80,8 @@ typings/
 # FuseBox cache
 .fusebox/
 
+.history/
+
 # DynamoDB Local files
 .dynamodb/
 
