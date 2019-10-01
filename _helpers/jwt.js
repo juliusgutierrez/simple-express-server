@@ -3,13 +3,14 @@ const config = require('../config');
 const userService = require('../user/user.service');
 module.exports = jwt;
 
+const url = "/api/v1";
 
 function jwt() {
     const secret = config.secret;
     return expressJwt({secret, isRevoked}).unless({
         path: [
-            '/users/create',
-            '/users/login'
+            {url : `${url}/users`, methods: ['POST']}, 
+            `${url}/users/login`
         ]
     });
 }

@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const userService = require('./user.service');
 
-router.get('/getAll', getAll);
-router.post('/create', createUser);
 router.post('/login', login);
-router.post('/update/:id', updateUserProfile);
-router.post('/delete/:id', deleteUserProfile);
+router.get('/', getAll);
+router.post('/', createUser);
+router.put('/:id', updateUserProfile);
+router.delete('/:id', deleteUserProfile);
 
 module.exports = router;
 

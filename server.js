@@ -14,11 +14,9 @@ const app = express();
 const router = express.Router();
 
 // connect to mongo db atlas server
-const dbRoute = "";
-
+const dbRoute = "mongodb://localhost:27017/test"
 // connect backend code to database
-mongoose.connect(
-    dbRoute,
+mongoose.connect(dbRoute,
     {
         useNewUrlParser: true,
         useCreateIndex: true
@@ -37,13 +35,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(jwt());
 
-// Hello World 
-app.use("/test", (req, res) => res.send('Hello World!'));
-
-//append /api to http requests
-app.use("/api", router);
-
-app.use("/users", require('./user/user.controller'));
+const apiUrl = "/api/v1";
+//append /api/v1 to http requests
+app.use(`${apiUrl}/users`, require('./user/user.controller'));
 
 app.use(errorHandler);
 
