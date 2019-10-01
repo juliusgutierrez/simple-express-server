@@ -2,6 +2,29 @@ const express = require('express');
 const router = express.Router();
 const userService = require('./user.service');
 
+/**
+ * @swagger
+ * /users/login:
+ *    post:
+ *      description: login using username and password
+ *      parameters:
+ *       - name: username
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: formData
+ *         required: true
+ *         type: string
+ *      responses:
+ *        200:
+ *           description: User found and logged in successfully
+ *        401:
+ *           description: Bad username, not found in db
+ *        403:
+ *           description: Username and password don't match     
+ *      
+ */
 router.post('/login', login);
 router.get('/', getAll);
 router.post('/', createUser);

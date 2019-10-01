@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error-handler');
-
+const swaggerDoc = require('./swaggerDoc');
 const API_PORT = 3001;
 const app = express();
 
@@ -30,6 +30,8 @@ db.once("open", () => console.log("connected to the database"));
 // check if connection with the db is successful
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+swaggerDoc(app);
+
 //app setup 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -38,7 +40,6 @@ app.use(jwt());
 const apiUrl = "/api/v1";
 //append /api/v1 to http requests
 app.use(`${apiUrl}/users`, require('./user/user.controller'));
-
 app.use(errorHandler);
 
 // launch the backend into a port 

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "./node_modules/nodemon/bin/nodemon.js ./server.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.6",
     "morgan": "^1.9.1",
+    "nodemon": "^1.19.3",
+    "swagger-jsdoc": "^3.4.0",
+    "swagger-ui-express": "^4.1.1",
     "yarn": "^1.15.2"
   },
   "devDependencies": {
