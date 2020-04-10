@@ -6,7 +6,12 @@ const logger = require('morgan');
 const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error-handler');
 const swaggerDoc = require('./swaggerDoc');
-const API_PORT = 3001;
+
+const {
+    API_PORT,
+    DB_URL
+} = process.env
+
 const app = express();
 
 // var cors = require('cors');
@@ -14,7 +19,7 @@ const app = express();
 const router = express.Router();
 
 // connect to mongo db atlas server
-const dbRoute = "mongodb://localhost:27017/test"
+const dbRoute = DB_URL
 // connect backend code to database
 mongoose.connect(dbRoute,
     {
