@@ -19,7 +19,7 @@
     "nodemon": "^1.19.3",
     "swagger-jsdoc": "^3.4.0",
     "swagger-ui-express": "^4.1.1",
-    "yarn": "^1.15.2"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
