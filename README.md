@@ -1,23 +1,23 @@
 ## simple-express-server
-A nodejs + express with following functionality:
+A dockerize nodejs + express with following functionality:
 * jwt for url security
 * can login
 * can create user
 * can get all users
 * can update users
 * can delete user
+* has basic Swagger UI (Inprogress)
 
 
 ### Requirements
 * Npm
-
+* Docker
 
 ### Build
-* npm install
+* docker-compose build
 
-### Prerequisites
-Before running the project, do first the following setup.
-* add a db route for mongodb
+### Deploy 
+* docker-compose up
 
-### Run 
-* npm start
+### UnDeploy
+* docker-compose down
