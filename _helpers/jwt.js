@@ -7,7 +7,7 @@ const url = "/api/v1";
 
 function jwt() {
     const secret = config.secret;
-    return expressJwt({secret, isRevoked}).unless({
+    return expressJwt({secret, isRevoked, algorithms: ['RS256']}).unless({
         path: [
             {url : `${url}/users/`, methods: ['GET', 'POST']}, 
             `${url}/users/login`
